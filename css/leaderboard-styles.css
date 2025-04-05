@@ -1,0 +1,43 @@
+.grid-container {
+    display: flex;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+    background-color: blue;
+    width: 20%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: auto;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+
+}
+
+.field {
+    padding: 5px;
+    border-radius: 3px;
+    border-color: white;
+    color: white;
+    font-size: xx-large;
+}
+
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
