@@ -1,0 +1,48 @@
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+#logo-container {
+    text-align: center;
+    margin-top: 10%;  
+}
+
+#logo {
+    max-width: 80%; 
+    height: auto;
+}
+
+#button-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px; 
+}
+
+button {
+    background-color: blue;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1); 
+}
+
+#play-button img, #leaderboard-button img {
+    max-width: 100px; 
+    height: auto;
+}
+
+button span {
+    font-size: 18px;
+    color: white;
+    margin-left: 10px;
+}
