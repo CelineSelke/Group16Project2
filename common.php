@@ -73,11 +73,10 @@ function revealAnswers($userInput) {
         $QandA = $_SESSION['QandA'];
         $visibleAnswers = &$_SESSION['visibleAnswers']; // Use reference to modify session value
 
-        $userInput = strtolower(trim($userInput));  // Get and sanitize user input
 
         // Compare the user input with each answer (case-insensitive)
         foreach ($QandA as $key => $answer) {
-            if (stripos($answer, $userInput) !== false) {
+            if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
                 $visibleAnswers[$key] = true;  // Mark the answer as visible if it matches
                 if($key == "answer1"){
                     $_SESSION['playerScore'] += (int)$QandA['answer1points'];

@@ -27,9 +27,13 @@
     <link rel="stylesheet" href="./css/game-styles.css">
 </head>
 <body>
+    <div class="player">
+        <img src="./images/clipart-guy.png">
+        <p>You</p>
+        <p>Score: <?php echo $_SESSION['playerScore']; ?></p>
+    </div>
     <div class="game-area">
         <h1>Family Feud</h1>
-        <h2>Score: <?php echo $_SESSION['playerScore']; ?></h2>
         <h2>Round: <?php echo $_SESSION['round']; ?></h2>
         <h3>Strikes: <?php echo $_SESSION['strikes']; ?></h3>
         <!-- Display the question -->
@@ -46,26 +50,37 @@
 
         <!-- Grid for answers -->
         <div class="answers-grid">
-            <?php 
-                // Access session variables
-                $visibleAnswers = $_SESSION['visibleAnswers'];
-                $QandA = $_SESSION['QandA'];
+            <div class="row">
+                <?php 
+                    // Access session variables
+                    $visibleAnswers = $_SESSION['visibleAnswers'];
+                    $QandA = $_SESSION['QandA'];
 
-                // Check if answers should be visible and display them
-                if ($visibleAnswers['answer1']) {
-                    echo '<div class="answer">' . htmlspecialchars($QandA['answer1']) . ' ' . htmlspecialchars($QandA['answer1points']) . '</div>';
-                }
-                if ($visibleAnswers['answer2']) {
-                    echo '<div class="answer">' . htmlspecialchars($QandA['answer2']) . ' ' . htmlspecialchars($QandA['answer2points']) . '</div>';
-                }
-                if ($visibleAnswers['answer3']) {
-                    echo '<div class="answer">' . htmlspecialchars($QandA['answer3']) . ' ' . htmlspecialchars($QandA['answer1points']) . '</div>';
-                }
-                if ($visibleAnswers['answer4']) {
-                    echo '<div class="answer">' . htmlspecialchars($QandA['answer4']) . ' ' . htmlspecialchars($QandA['answer1points']) . '</div>';
-                }
-            ?>
+                    if ($visibleAnswers['answer1']) {
+                        echo '<div class="answer">' . htmlspecialchars($QandA['answer1']) . ' ' . htmlspecialchars($QandA['answer1points']) . '</div>';
+                    }
+                    if ($visibleAnswers['answer2']) {
+                        echo '<div class="answer">' . htmlspecialchars($QandA['answer2']) . ' ' . htmlspecialchars($QandA['answer2points']) . '</div>';
+                    }
+                ?>
+            </div>
+            <div class="row">
+                <?php 
+                    if ($visibleAnswers['answer3']) {
+                        echo '<div class="answer">' . htmlspecialchars($QandA['answer3']) . ' ' . htmlspecialchars($QandA['answer3points']) . '</div>';
+                    }
+                    if ($visibleAnswers['answer4']) {
+                        echo '<div class="answer">' . htmlspecialchars($QandA['answer4']) . ' ' . htmlspecialchars($QandA['answer4points']) . '</div>';
+                    }
+                ?>
+            </div>
         </div>
+
+    </div>
+    <div class="player">
+        <img src="./images/freddy.webp">
+        <p>CPU</p>
+        <p>Score: <?php echo $_SESSION['cpuScore']; ?></p>
     </div>
 </body>
 </html>
