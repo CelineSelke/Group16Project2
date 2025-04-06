@@ -1,3 +1,13 @@
+<?php
+    include "common.php";
+
+    session_start();
+
+    if(isset($_SESSION['playerScore'])){
+        newGame();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
