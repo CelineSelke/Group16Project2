@@ -1,6 +1,6 @@
 <?php
 function get4Answers(){
-    $csvFile = './questions/questions/questions_4_answers.csv';
+    $csvFile = './questions/questions_4_answers.csv';
 
     // Check if the file exists
     if (!file_exists($csvFile)) {
