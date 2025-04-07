@@ -1,7 +1,7 @@
 <?php
-    include "common.php";
-
     session_start();
+
+    include "common.php";
 
     if(isset($_SESSION['playerScore'])){
         newGame();
@@ -21,7 +21,7 @@
         <img id="logo" src="./images/logo.png" alt="Family Feud Logo">
     </div>
     <div id="button-row">
-        <a href="round1.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
+        <a href="round.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
         <a href="leaderboard.php"><button id="leaderboard-button"><img src="./images/leaderboard.webp" alt="Leaderboard Button"></button></a>
     </div>
 </body>

@@ -6,7 +6,7 @@
     if(!isset($_SESSION['playerScore'])){
         newGame();
     }
-    else if($_SESSION['strikes'] > 2){
+    else if($_SESSION['strikes'] > 2 && $_SESSION['round'] < 3){
         newRound();
     }
 
