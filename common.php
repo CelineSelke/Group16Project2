@@ -138,12 +138,12 @@ function updateCPUScore(){
             }
         }
         if($i == 3){
-            if($rng > 25){
+            if($rng > 60){
                 $_SESSION['cpuScore'] += (int)$QandA['answer3points'];
             }
         }
         if($i == 4){
-            if($rng > 13){
+            if($rng > 70){
                 $_SESSION['cpuScore'] += (int)$QandA['answer4points'];
             }
         }
