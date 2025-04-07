@@ -34,21 +34,26 @@
                         $_SESSION['question_index']++;
                         header("Location: " . $_SERVER['PHP_SELF']);
                     }
-                    if($key == "answer2"){
+                    else if($key == "answer2"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer2points'];
                         $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer2points'];
                         $_SESSION['question_index']++;
                         header("Location: " . $_SERVER['PHP_SELF']);
                     }
-                    if($key == "answer3"){
+                    else if($key == "answer3"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer3points'];
                         $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer3points'];
                         $_SESSION['question_index']++;
                         header("Location: " . $_SERVER['PHP_SELF']);
                     }
-                    if($key == "answer4"){
+                    else if($key == "answer4"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer4points'];
                         $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer4points'];
+                        $_SESSION['question_index']++;
+                        header("Location: " . $_SERVER['PHP_SELF']);
+                    }
+                    else{
+                        $_SESSION['answerList'][$_SESSION['question_index']] = $userInput . " 0";
                         $_SESSION['question_index']++;
                         header("Location: " . $_SERVER['PHP_SELF']);
                     }
