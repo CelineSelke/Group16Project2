@@ -15,8 +15,6 @@ function newGame(){
     $_SESSION['visibleAnswers'] = array('answer1' => false, 'answer2' => false, 'answer3' => false, 'answer4' => false);
 
     $_SESSION['QandA'] = get4Answers(); // Get the question and answers
-
-    $_SESSION['QAList'] = [$QA1, $QA2, $QA3, $QA4];
     
     $_SESSION['answerList'] = ["","","","","",""];
 
