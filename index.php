@@ -1,7 +1,7 @@
 <?php
-    include "common.php";
-
     session_start();
+
+    include "common.php";
 
     if(isset($_SESSION['playerScore'])){
         newGame();

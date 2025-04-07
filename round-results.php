@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    include "common.php";
+
+    updateCPUScore();
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +15,8 @@
     <link rel="stylesheet" href="./css/game-styles.css">
 </head>
 <body>
-    <h2>Score: <?php echo $_SESSION['playerScore']; ?></h2>
-    <h2>Score: <?php echo $_SESSION['cpuScore']; ?></h2>
+    <h2>Your Score: <?php echo $_SESSION['playerScore']; ?></h2>
+    <h2>CPU Score: <?php echo $_SESSION['cpuScore']; ?></h2>
 
     <a href="round1.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
 </body>

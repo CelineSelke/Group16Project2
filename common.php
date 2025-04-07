@@ -1,7 +1,10 @@
 <?php
+session_start();
 
 function newGame(){
     $_SESSION['playerScore'] = 0;
+
+    $_SESSION['fastMoney'] = false;
 
     $_SESSION['strikes'] = 0;
 
@@ -73,7 +76,6 @@ function revealAnswers($userInput) {
         $QandA = $_SESSION['QandA'];
         $visibleAnswers = &$_SESSION['visibleAnswers']; // Use reference to modify session value
 
-
         // Compare the user input with each answer (case-insensitive)
         foreach ($QandA as $key => $answer) {
             if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
@@ -90,9 +92,14 @@ function revealAnswers($userInput) {
                 if($key == "answer4"){
                     $_SESSION['playerScore'] +=  (int)$QandA['answer4points'];
                 }
+                if (count(array_filter($visibleAnswers, fn($value) => $value === true)) === count($visibleAnswers)) {
+                    $_SESSION['strikes'] = 3;
+                    endRound();
+                }
                 return; // Stop after revealing the first matching answer
             }
         }
+
         //increment strike count if answer doesn't match and end round if strike count reaches three 
         $_SESSION['strikes'] += 1;
         if($_SESSION['strikes'] > 2){
@@ -101,7 +108,39 @@ function revealAnswers($userInput) {
 }
 
 function endRound(){
-    header('Location: round-results.php');
+    if($_SESSION['round']  < 3){
+        header('Location: round-results.php');
+    }
+    else{
+        header('Location: final-results.php');
+    }
+}
+
+function updateCPUScore(){
+    $QandA = $_SESSION['QandA'];
+    for($i = 1; $i <= 4; $i++){
+        $rng = rand(0,99);
+        if($i == 1){
+            if($rng > 25){
+                $_SESSION['cpuScore'] += (int)$QandA['answer1points'];
+            }
+        }
+        if($i == 2){
+            if($rng > 50){
+                $_SESSION['cpuScore'] += (int)$QandA['answer2points'];
+            }
+        }
+        if($i == 3){
+            if($rng > 25){
+                $_SESSION['cpuScore'] += (int)$QandA['answer3points'];
+            }
+        }
+        if($i == 4){
+            if($rng > 13){
+                $_SESSION['cpuScore'] += (int)$QandA['answer4points'];
+            }
+        }
+    }
 }
 
 
