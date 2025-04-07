@@ -16,7 +16,7 @@ body {
     width: 80vw;
     height: 80vh;
     background: url("../images/bulbwall.jpg");
-    background-size: 300px 300px;
+    background-size: 500px 500px;
     background-position: center;
     background-repeat: repeat;
     color: white;
@@ -41,13 +41,14 @@ body {
 .game-area {
     background-color: blue;
     color: white;
-    width: 90%;
+    width: 70%;
     height: 75%;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-self: center;
+    border-radius: 30px;
     
 }
 
@@ -57,20 +58,25 @@ body {
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 5px;
+    border-radius: 20%;
+    background-color: rgb(8,14,101);
+}
+
+.player p {
+    margin: 5px 5px 0 0;
 }
 
 .player img {
     width: 100px;
     height: auto;
     border-radius: 20%;
-    background-color: rgb(8,14,101);
+
     border-style: inset;
     border-color: aquamarine;
 }
 
 .answer {
-    background-color: rgb(110, 144, 217);
+    background: radial-gradient(ellipse at top, rgb(100, 145, 223) 40%, rgb(13, 63, 192) 100%);
     padding: 15px;
     border: 2px solid rgb(205, 205, 209);
     border-radius: 2px;
@@ -89,6 +95,7 @@ form {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    width: 80%
 }
 
 header {
@@ -99,7 +106,7 @@ header {
     text-align: center;
     width: 50vw;
     height: 140px;
-    background-color:#5a30da;
+    background-color: #041b39;
     top: 0;
     position: fixed;
     border-left: 4px;
@@ -110,14 +117,21 @@ header {
     border-color: aqua;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+    color: white;
+    font-size: 25px;
+    border-style: groove;
 }
 
 h2 {
     margin: 0;
+    font-size: 40px;
+}
+h3 {
+    margin: 10px;
 }
 
 footer {
-    background-color:#a86464;
+    background-color:rgb(4, 27, 57);
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -127,4 +141,30 @@ footer {
     height: 70px;
     position: fixed;
     bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 3px solid rgb(80, 91, 91);
+    border-bottom: 0px;
+}
+
+.board-box {
+    padding: 15px;
+    border-radius: 50%;
+    border: 5px solid yellow;
+}
+
+#outer {
+    background-color: rgb(61, 54, 38);
+    padding: 0px;
+}
+
+#inner {
+    border-color: orange;
+}
+
+#answerInput {
+    height: 50px;
+    width: 60%;
+    font-size: 30px;
+    text-align: center;
 }
