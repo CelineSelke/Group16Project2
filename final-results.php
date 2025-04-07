@@ -18,7 +18,7 @@
 </head>
 <body>
     <?php
-        if($_SESSION['fastMoneyDone'] == false){
+        if($_SESSION['fastMoney'] == false){
             echo("
             <div class=\"game-area\">
             <h1>Your Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1>
@@ -34,7 +34,7 @@
 
         } 
         else{
-            echo("<div><h1>Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1><a href=\"round.php\"><button id=\"login\">Log In to Save Score</button></a></div>");
+            echo("<div class=\"game-area\"><h1>Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1><a href=\"login.php\"><button id=\"login\">Log In to Save Score</button></a></div>");
         }
 
     ?>
