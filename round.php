@@ -50,11 +50,11 @@
                     <!-- Form for typing answers -->
 
 
-                    <!-- Grid for answers -->
-                    <div class="answers-grid">
-                        <?php 
-                        // $visibleAnswers = $_SESSION['visibleAnswers'];
-                        // $QandA = $_SESSION['QandA'];
+            <!-- Grid for answers -->
+            <div class="answers-grid">
+                <?php 
+                $visibleAnswers = $_SESSION['visibleAnswers'];
+                $QandA = $_SESSION['QandA'];
 
                         for ($i = 1; $i <= 6; $i++) {
                             if (!empty($visibleAnswers["answer$i"])) {
