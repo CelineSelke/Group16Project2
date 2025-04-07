@@ -18,6 +18,6 @@
     <h2>Your Score: <?php echo $_SESSION['playerScore']; ?></h2>
     <h2>CPU Score: <?php echo $_SESSION['cpuScore']; ?></h2>
 
-    <a href="round1.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
+    <a href="round.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
 </body>
 </html>
