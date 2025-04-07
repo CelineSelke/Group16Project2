@@ -76,11 +76,6 @@ function revealAnswers($userInput) {
         $QandA = $_SESSION['QandA'];
         $visibleAnswers = &$_SESSION['visibleAnswers']; // Use reference to modify session value
 
-        if (count(array_filter($visibleAnswers, fn($value) => $value === true)) === count($visibleAnswers)) {
-            $_SESSION['strikes'] = 3;
-            endRound();
-        }
-
         // Compare the user input with each answer (case-insensitive)
         foreach ($QandA as $key => $answer) {
             if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
@@ -97,9 +92,14 @@ function revealAnswers($userInput) {
                 if($key == "answer4"){
                     $_SESSION['playerScore'] +=  (int)$QandA['answer4points'];
                 }
+                if (count(array_filter($visibleAnswers, fn($value) => $value === true)) === count($visibleAnswers)) {
+                    $_SESSION['strikes'] = 3;
+                    endRound();
+                }
                 return; // Stop after revealing the first matching answer
             }
         }
+
         //increment strike count if answer doesn't match and end round if strike count reaches three 
         $_SESSION['strikes'] += 1;
         if($_SESSION['strikes'] > 2){
