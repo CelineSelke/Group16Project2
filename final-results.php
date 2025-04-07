@@ -20,7 +20,7 @@
     <?php
         if($_SESSION['fastMoneyDone'] == false){
             echo("
-            <div>
+            <div class=\"game-area\">
             <h1>Your Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1>
             <h1>CPU Score: " . htmlspecialchars($_SESSION['cpuScore']) .  "</h1>");
 
