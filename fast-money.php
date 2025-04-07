@@ -1,52 +1,63 @@
 <?php
-    session_start();
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    
     include "common.php";
 
-    if(!isset($_SESSION['question_index'])){
+    if($_SESSION['question_index'] < 0){
+        $_SESSION['fastMoney'] = true;
+
         $_SESSION['visibleAnswers'] = array('answer1' => false, 'answer2' => false, 'answer3' => false, 'answer4' => false);
         $_SESSION['question_index'] = 0;
-    }
 
-    if(!isset($_SESSION['QAList'])){
         $QA1 = get4Answers();
         $QA2 = get4Answers();
         $QA3 = get4Answers();
         $QA4 = get4Answers();
 
         $_SESSION['QAList'] = [$QA1, $QA2, $QA3, $QA4];
+        $_SESSION['answerList'] = ["","","","","",""];
+    }
+    if($_SESSION['question_index'] > 3){
+
+        header('Location: final-results.php');
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        foreach($_SESSION['QAList'] as $QandA){
+        $userInput = isset($_POST['answerInput']) ? $_POST['answerInput'] : '';
+        $QandA = $_SESSION['QAList'][$_SESSION['question_index']];
             foreach ($QandA as $key => $answer) {
-                if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
-                    $visibleAnswers[$key] = true;  // Mark the answer as visible if it matches
+                if (stripos($answer, $userInput) !== false) {
                     if($key == "answer1"){
                         $_SESSION['playerScore'] += (int)$QandA['answer1points'];
+                        $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer1points'];
                         $_SESSION['question_index']++;
-
+                        header("Location: " . $_SERVER['PHP_SELF']);
                     }
                     if($key == "answer2"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer2points'];
+                        $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer2points'];
                         $_SESSION['question_index']++;
-
+                        header("Location: " . $_SERVER['PHP_SELF']);
                     }
                     if($key == "answer3"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer3points'];
+                        $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer3points'];
                         $_SESSION['question_index']++;
-
+                        header("Location: " . $_SERVER['PHP_SELF']);
                     }
                     if($key == "answer4"){
                         $_SESSION['playerScore'] +=  (int)$QandA['answer4points'];
+                        $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer4points'];
                         $_SESSION['question_index']++;
-
+                        header("Location: " . $_SERVER['PHP_SELF']);
                     }
 
 
                     return; // Stop after revealing the first matching answer
                 }
             }
-        }
+        
     }
 
 
@@ -85,12 +96,12 @@
             <!-- Grid for answers -->
             <div class="answers-grid">
                 <?php 
-                $visibleAnswers = $_SESSION['visibleAnswers'];
+                $answerList = $_SESSION['answerList'];
                 $QandA = $_SESSION['QAList'][$_SESSION['question_index']];
 
-                for ($i = 1; $i <= 6; $i++) {
-                    if (!empty($visibleAnswers["answer$i"])) {
-                        echo '<div class="answer">' . htmlspecialchars($QandA["answer$i"]) . ' ' . htmlspecialchars($QandA["answer{$i}points"]) . '</div>';
+                for ($i = 0; $i < 6; $i++) {
+                    if (($answerList[$i]) != "") {
+                        echo '<div class="answer">' . htmlspecialchars($answerList[$i]) . '</div>';
                     } else {
                         echo '<div class="answer"></div>'; // keeps the grid consistent
                     }
