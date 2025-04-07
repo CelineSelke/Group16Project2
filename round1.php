@@ -34,7 +34,6 @@
             <p>Score: <?php echo $_SESSION['playerScore']; ?></p>
         </div>
         <div class="game-area">
-            <h1>Family Feud</h1>
             <h2>Round: <?php echo $_SESSION['round']; ?></h2>
             <h3>Strikes: <?php echo $_SESSION['strikes']; ?></h3>
             <!-- Display the question -->
@@ -43,38 +42,22 @@
             </div>
 
             <!-- Form for typing answers -->
-            <form method="POST">
-                <label for="answerInput">Type an answer:</label>
-                <input type="text" name="answerInput" id="answerInput" placeholder="Type an answer to reveal">
-                <button type="submit">Submit</button>
-            </form>
+
 
             <!-- Grid for answers -->
             <div class="answers-grid">
-                <div class="row">
-                    <?php 
-                        // Access session variables
-                        $visibleAnswers = $_SESSION['visibleAnswers'];
-                        $QandA = $_SESSION['QandA'];
+                <?php 
+                    // Put answers in box if they have any
+                    for ($i = 1; $i <= 6; $i++) {
+                        if (!empty($visibleAnswers["answer$i"])) {
+                            echo '<div class="answer">' . htmlspecialchars($QandA["answer$i"]) . ' ' . htmlspecialchars($QandA["answer{$i}points"]) . '</div>';
+                        } else {
+                            echo '<div class="answer"></div>'; // keeps the grid consistent
+                        }
+                    }
 
-                        if ($visibleAnswers['answer1']) {
-                            echo '<div class="answer">' . htmlspecialchars($QandA['answer1']) . ' ' . htmlspecialchars($QandA['answer1points']) . '</div>';
-                        }
-                        if ($visibleAnswers['answer2']) {
-                            echo '<div class="answer">' . htmlspecialchars($QandA['answer2']) . ' ' . htmlspecialchars($QandA['answer2points']) . '</div>';
-                        }
-                    ?>
-                </div>
-                <div class="row">
-                    <?php 
-                        if ($visibleAnswers['answer3']) {
-                            echo '<div class="answer">' . htmlspecialchars($QandA['answer3']) . ' ' . htmlspecialchars($QandA['answer3points']) . '</div>';
-                        }
-                        if ($visibleAnswers['answer4']) {
-                            echo '<div class="answer">' . htmlspecialchars($QandA['answer4']) . ' ' . htmlspecialchars($QandA['answer4points']) . '</div>';
-                        }
-                    ?>
-                </div>
+                    echo '<div class="answer full-span"></div>';
+                ?>
             </div>
 
         </div>
@@ -84,5 +67,12 @@
             <p>Score: <?php echo $_SESSION['cpuScore']; ?></p>
         </div>
     </div>
+    <footer>
+        <form method="POST">
+            <label for="answerInput">Type an answer:</label>
+            <input type="text" name="answerInput" id="answerInput" placeholder="Type an answer to reveal">
+            <button type="submit">Submit</button>
+        </form>
+    </footer>
 </body>
 </html>
