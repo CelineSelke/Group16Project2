@@ -34,12 +34,14 @@
             <p>Score: <?php echo $_SESSION['playerScore']; ?></p>
         </div>
         <div class="game-area">
-            <h2>Round: <?php echo $_SESSION['round']; ?></h2>
-            <h3>Strikes: <?php echo $_SESSION['strikes']; ?></h3>
             <!-- Display the question -->
             <div id="question">
                 <h2><?php echo htmlspecialchars($_SESSION['QandA']['question']); ?></h2>
             </div>
+            <h2>Round: <?php echo $_SESSION['round']; ?></h2>
+            <h3>Strikes: <?php echo $_SESSION['strikes']; ?></h3>
+            
+            
 
             <!-- Form for typing answers -->
 
@@ -71,7 +73,7 @@
         <form method="POST">
             <label for="answerInput">Type an answer:</label>
             <input type="text" name="answerInput" id="answerInput" placeholder="Type an answer to reveal">
-            <button type="submit">Submit</button>
+            <input type="image" src="./images/arrow.svg" alt="Submit" width="50" height="50">
         </form>
     </footer>
 </body>
