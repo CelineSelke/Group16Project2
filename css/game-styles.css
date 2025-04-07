@@ -29,6 +29,7 @@ body {
 }
 
 .answers-grid {
+    height: 70%;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(2, 1fr);  
@@ -40,12 +41,13 @@ body {
 .game-area {
     background-color: blue;
     color: white;
-    width: 50%;
+    width: 90%;
     height: 75%;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    align-self: center;
     
 }
 
@@ -87,6 +89,31 @@ form {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50vw;
+    height: 140px;
+    background-color:#5a30da;
+    top: 0;
+    position: fixed;
+    border-left: 4px;
+    border-right: 4px;
+    border-bottom: 4px;
+    border-top: 0px;
+    border-style: solid;
+    border-color: aqua;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+h2 {
+    margin: 0;
 }
 
 footer {

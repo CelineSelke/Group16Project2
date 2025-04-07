@@ -27,6 +27,11 @@
     <link rel="stylesheet" href="./css/game-styles.css">
 </head>
 <body>
+    <header>
+    <div id="question">
+        <h2><?php echo htmlspecialchars($_SESSION['QandA']['question']); ?></h2>
+    </div>
+    </header>
     <div class="board">
         <div class="player">
             <img src="./images/clipart-guy.png">
@@ -35,9 +40,6 @@
         </div>
         <div class="game-area">
             <!-- Display the question -->
-            <div id="question">
-                <h2><?php echo htmlspecialchars($_SESSION['QandA']['question']); ?></h2>
-            </div>
             <h2>Round: <?php echo $_SESSION['round']; ?></h2>
             <h3>Strikes: <?php echo $_SESSION['strikes']; ?></h3>
             
