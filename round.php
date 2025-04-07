@@ -1,5 +1,5 @@
 <?php
-    session_start(); // Start a session to preserve variables across requests
+    // session_start(); // Start a session to preserve variables across requests
 
     include "common.php";
 
@@ -49,14 +49,16 @@
             <!-- Grid for answers -->
             <div class="answers-grid">
                 <?php 
-                    // Put answers in box if they have any
-                    for ($i = 1; $i <= 6; $i++) {
-                        if (!empty($visibleAnswers["answer$i"])) {
-                            echo '<div class="answer">' . htmlspecialchars($QandA["answer$i"]) . ' ' . htmlspecialchars($QandA["answer{$i}points"]) . '</div>';
-                        } else {
-                            echo '<div class="answer"></div>'; // keeps the grid consistent
-                        }
+                // $visibleAnswers = $_SESSION['visibleAnswers'];
+                // $QandA = $_SESSION['QandA'];
+
+                for ($i = 1; $i <= 6; $i++) {
+                    if (!empty($visibleAnswers["answer$i"])) {
+                        echo '<div class="answer">' . htmlspecialchars($QandA["answer$i"]) . ' ' . htmlspecialchars($QandA["answer{$i}points"]) . '</div>';
+                    } else {
+                        echo '<div class="answer"></div>'; // keeps the grid consistent
                     }
+                }
 
                     echo '<div class="answer full-span"></div>';
                 ?>
