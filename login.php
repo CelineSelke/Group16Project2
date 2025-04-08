@@ -21,9 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/game-styles.css">
     <title>Login</title>
 </head>
 <body>
+<div class="game-area">
     <form action="login.php" method="post">
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Enter your name" required>
@@ -32,5 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Save to Leaderboard</button>
     </form>
+</div>
 </body>
 </html>
