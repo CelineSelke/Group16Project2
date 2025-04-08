@@ -85,7 +85,7 @@ function revealAnswers($userInput) {
 
         // Compare the user input with each answer (case-insensitive)
         foreach ($QandA as $key => $answer) {
-            if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
+            if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true && strlen($userInput) >= 1) {
                 $visibleAnswers[$key] = true;  // Mark the answer as visible if it matches
                 if($key == "answer1"){
                     $_SESSION['playerScore'] += (int)$QandA['answer1points'];
