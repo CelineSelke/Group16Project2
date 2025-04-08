@@ -49,5 +49,9 @@ echo "</div>";
 </head>
 <body>
 
+<div id="button-row">
+    <a href="./index.php"><button id="play-button"><img src="./images/play.png" alt="Play Button"></button></a>
+</div>
+
 </body>
 </html>
