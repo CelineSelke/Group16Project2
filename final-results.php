@@ -28,17 +28,18 @@
                 echo("<a href=\"fast-money.php\"><button id=\"fast-money\">Go to Fast Money Round</button></a></div>");
             }
             else{
-                echo("<a href=\"login.php\"><button id=\"login\">Log In to Save Score</button></a></div>");
+                echo("<a href=\"login.php?score=" . $_SESSION['playerScore'] . "\"><button id=\"login\">Log In to Save Score</button></a></div>");
             }
-            
 
         } 
         else{
-            echo("<div class=\"game-area\"><h1>Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1><a href=\"login.php\"><button id=\"login\">Log In to Save Score</button></a></div>");
+            echo("<div class=\"game-area\">
+                    <h1>Score: " . htmlspecialchars($_SESSION['playerScore']) .  "</h1>
+                    <a href=\"login.php?score=" . $_SESSION['playerScore'] . "\">
+                        <button id=\"login\">Log In to Save Score</button>
+                    </a>
+                  </div>");
         }
-
     ?>
-
-    
 </body>
 </html>

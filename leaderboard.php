@@ -1,31 +1,42 @@
 <?php
-// Set the path to your CSV file
 $file = 'leaderboard.csv';
 
-// Open the CSV file
+
+$data = []; // Stores all data from CSV
 if (($handle = fopen($file, 'r')) !== false) {
-    // Initialize a counter to keep track of the number of rows processed
-    $counter = 0;
-
-    // Start the grid container
-    echo "<div class='grid-container'>";
-
-    // Read through the CSV file line by line
-    while (($data = fgetcsv($handle)) !== false && $counter < 5) {
-        // Output each row inside a div
-        echo "<div class='grid-item'>";
-        echo "<div class='field'>" . htmlspecialchars($data[0]) . "</div>"; // Column 1
-        echo "<div class='field'>" . htmlspecialchars($data[1]) . "</div>"; // Column 2
-        echo "</div>"; // End grid-item
-        $counter++;
+    while (($row = fgetcsv($handle)) !== false) { // Read CSV line by line
+        if (count($row) >= 2) { // Prevents error when reading less than two values
+            $data[] = [$row[0], (int)$row[1]]; 
+        }
     }
-
-    // Close the grid container
-    echo "</div>";
     fclose($handle);
-} else {
-    echo "Error: Unable to open CSV file.";
 }
+
+// Sort scores by descending
+usort($data, function($a, $b) {
+    return $b[1] <=> $a[1];
+});
+
+// Keep top 5 and overwrite file
+$topFive = array_slice($data, 0, 5);
+if (($handle = fopen($file, 'w')) !== false) { // Open and clear file
+    foreach ($topFive as $row) { //Adds all value back in the CSV
+        fputcsv($handle, $row);
+    }
+    fclose($handle);
+}
+
+// Display the top 5
+echo "<div class='grid-container'>";
+$counter = 0;
+foreach ($topFive as $row) {
+    echo "<div class='grid-item'>";
+    echo "<div class='field'>" . htmlspecialchars($row[0]) . "</div>";
+    echo "<div class='field'>" . htmlspecialchars($row[1]) . "</div>";
+    echo "</div>";
+    $counter++;
+}
+echo "</div>";
 ?>
 
 <!DOCTYPE html>

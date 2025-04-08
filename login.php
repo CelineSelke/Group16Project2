@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Enter your name" required>
 
-        <input type="hidden" name="score" value="<?php echo $_POST['score'] ?? 0; ?>">
+        <input type="hidden" name="score" value="<?php echo $_GET['score'] ?? $_POST['score'] ?? 0; ?>">
 
         <button type="submit">Save to Leaderboard</button>
     </form>
