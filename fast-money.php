@@ -52,16 +52,18 @@
                         $_SESSION['question_index']++;
                         header("Location: " . $_SERVER['PHP_SELF']);
                     }
-                    else{
-                        $_SESSION['answerList'][$_SESSION['question_index']] = $userInput . " 0";
-                        $_SESSION['question_index']++;
-                        header("Location: " . $_SERVER['PHP_SELF']);
-                    }
+
 
 
                     return; // Stop after revealing the first matching answer
                 }
+
             }
+        
+            $_SESSION['answerList'][$_SESSION['question_index']] = $userInput . " 0";
+            $_SESSION['question_index']++;
+            header("Location: " . $_SERVER['PHP_SELF']);
+        
         
     }
 
