@@ -27,7 +27,7 @@
         $userInput = isset($_POST['answerInput']) ? $_POST['answerInput'] : '';
         $QandA = $_SESSION['QAList'][$_SESSION['question_index']];
             foreach ($QandA as $key => $answer) {
-                if (stripos($answer, $userInput) !== false) {
+                if (stripos($answer, $userInput) !== false && strlen($userInput) >= 1) {
                     if($key == "answer1"){
                         $_SESSION['playerScore'] += (int)$QandA['answer1points'];
                         $_SESSION['answerList'][$_SESSION['question_index']] = $answer . " " . $QandA['answer1points'];

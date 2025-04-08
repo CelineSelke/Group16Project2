@@ -85,7 +85,7 @@ function revealAnswers($userInput) {
 
         // Compare the user input with each answer (case-insensitive)
         foreach ($QandA as $key => $answer) {
-            if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true) {
+            if (stripos($answer, $userInput) !== false && $visibleAnswers[$key] !== true && strlen($userInput) >= 1) {
                 $visibleAnswers[$key] = true;  // Mark the answer as visible if it matches
                 if($key == "answer1"){
                     $_SESSION['playerScore'] += (int)$QandA['answer1points'];
@@ -138,12 +138,12 @@ function updateCPUScore(){
             }
         }
         if($i == 3){
-            if($rng > 25){
+            if($rng > 60){
                 $_SESSION['cpuScore'] += (int)$QandA['answer3points'];
             }
         }
         if($i == 4){
-            if($rng > 13){
+            if($rng > 70){
                 $_SESSION['cpuScore'] += (int)$QandA['answer4points'];
             }
         }
